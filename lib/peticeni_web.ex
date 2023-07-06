@@ -87,6 +87,9 @@ defmodule PeticeniWeb do
       import PeticeniWeb.CoreComponents
       import PeticeniWeb.Gettext
 
+      # Custom html helpers
+      import PeticeniWeb.HtmlHelpers
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 

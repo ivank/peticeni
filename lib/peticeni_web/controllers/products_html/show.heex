@@ -1,0 +1,19 @@
+<div class="max-w-[85rem] px-4sm:px-6 lg:px-8 mx-auto">
+  <header>
+    <p class="mb-2 text-sm font-semibold text-blue-600">
+      <.link href={~p"/products"}><%= gettext("Products") %></.link>
+    </p>
+    <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
+      <%= @product.name %>
+    </h1>
+  </header>
+
+  <div class="columns-2 mt-5">
+    <.table rows={@prices} id="productPrices">
+      <:col :let={day} label={gettext("Date")}><%= day.date %></:col>
+      <:col :let={day} label={gettext("Price")}><%= currency(day.price) %></:col>
+      <:col :let={day} label={gettext("Store")}><%= day.store %></:col>
+    </.table>
+    <div class="w-full aspect-video"><%= Contex.Plot.to_svg(@plot) %></div>
+  </div>
+</div>

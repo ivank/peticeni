@@ -1,0 +1,46 @@
+<!-- Table Section -->
+<div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
+  <header>
+    <h1 class="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">
+      <%= gettext("Products") %>
+    </h1>
+  </header>
+
+  <div class="mt-5">
+    <.table rows={@products} id="products">
+      <:col :let={product} label={gettext("Date")}><%= product.date %></:col>
+      <:col :let={product} label={gettext("Name")}><%= product.name %></:col>
+      <:col :let={product} label={gettext("Trend")}>
+        <span class={[
+          "inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium",
+          product.trend == 0 &&
+            "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-red-200",
+          product.trend < 0 &&
+            "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+          product.trend > 0 &&
+            "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+        ]}>
+          <.icon name={
+            cond do
+              product.trend == 0 -> "hero-minus"
+              product.trend < 0 -> "hero-arrow-trending-up"
+              product.trend > 0 -> "hero-arrow-trending-down"
+            end
+          } />
+          <%= Number.Delimit.number_to_delimited(product.trend, precision: 1) %>
+        </span>
+      </:col>
+      <:col :let={product} label={gettext("Price")}><%= currency(product.price) %></:col>
+      <:col :let={product} label={gettext("Store")}><%= product.store %></:col>
+      <:action :let={product}>
+        <.link
+          href={~p"/products/#{product.id}"}
+          class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
+        >
+          Details
+        </.link>
+      </:action>
+    </.table>
+  </div>
+</div>
+<!-- End Table Section -->
