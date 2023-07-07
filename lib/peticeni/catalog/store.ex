@@ -2,6 +2,14 @@ defmodule Peticeni.Catalog.Store do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @type t :: %__MODULE__{
+          name: String.t(),
+          prices: [Price.t()],
+          products: [Product.t()],
+          inserted_at: NaiveDateTime.t(),
+          updated_at: NaiveDateTime.t()
+        }
+
   schema "stores" do
     field :name, :string
 
