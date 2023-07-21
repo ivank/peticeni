@@ -448,16 +448,31 @@ defmodule PeticeniWeb.CoreComponents do
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead class="bg-gray-50 dark:bg-gray-700">
                 <tr>
-                  <th :for={col <- @col} scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500 dark:text-gray-400"><%= col[:label] %></th>
-                  <th :if={@action != []} class="px-6 py-3 text-right text-xs font-medium uppercase text-gray-500 dark:text-gray-400"><span class="sr-only"><%= gettext("Actions") %></span></th>
+                  <th
+                    :for={col <- @col}
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium uppercase text-gray-500 dark:text-gray-400"
+                  >
+                    <%= col[:label] %>
+                  </th>
+                  <th
+                    :if={@action != []}
+                    class="px-6 py-3 text-right text-xs font-medium uppercase text-gray-500 dark:text-gray-400"
+                  >
+                    <span class="sr-only"><%= gettext("Actions") %></span>
+                  </th>
                 </tr>
               </thead>
               <tbody
                 id={@id}
                 phx-update={match?(%Phoenix.LiveView.LiveStream{}, @rows) && "stream"}
                 class="divide-y divide-gray-200 dark:divide-gray-700"
+              >
+                <tr
+                  :for={row <- @rows}
+                  id={@row_id && @row_id.(row)}
+                  class="group hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                <tr :for={row <- @rows} id={@row_id && @row_id.(row)} class="group hover:bg-gray-100 dark:hover:bg-gray-700">
                   <td
                     :for={{col, i} <- Enum.with_index(@col)}
                     phx-click={@row_click && @row_click.(row)}
@@ -468,7 +483,6 @@ defmodule PeticeniWeb.CoreComponents do
                       <span class={["relative", i == 0 && "font-semibold text-zinc-900"]}>
                         <%= render_slot(col, @row_item.(row)) %>
                       </span>
-
                     </div>
                   </td>
 
@@ -484,14 +498,12 @@ defmodule PeticeniWeb.CoreComponents do
                     </div>
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-
     """
   end
 

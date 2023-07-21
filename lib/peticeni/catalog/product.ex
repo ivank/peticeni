@@ -15,6 +15,7 @@ defmodule Peticeni.Catalog.Product do
     field(:measure, Ecto.Enum, values: [:count, :liter, :kg], default: :count)
 
     has_many :prices, Peticeni.Catalog.Price
+    many_to_many :stores, Peticeni.Catalog.Store, join_through: Peticeni.Catalog.Price
 
     timestamps()
   end
@@ -22,7 +23,7 @@ defmodule Peticeni.Catalog.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :measure])
+    |> validate_required([:name, :measure])
   end
 end

@@ -1,0 +1,22 @@
+<.simple_form
+  :let={f}
+  for={@changeset}
+  action={~p"/admin/products/#{@changeset.data}"}
+  phx-change="validate"
+  phx-submit="save"
+>
+  <.input field={f[:name]} label={gettext("Name")} />
+  <.input
+    field={f[:measure]}
+    label={gettext("Measure")}
+    type="select"
+    options={[
+      {gettext("Count"), "count"},
+      {gettext("Liter"), "liter"},
+      {gettext("KG"), "kg"}
+    ]}
+  />
+  <:actions>
+    <.button><%= gettext("Save") %></.button>
+  </:actions>
+</.simple_form>

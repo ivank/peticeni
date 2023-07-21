@@ -51,8 +51,7 @@ defmodule Peticeni.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:contex, "~> 0.4.0"},
-      {:number, "~> 1.0.4"},
-      {:tailwind_formatter, "~> 0.3.5", only: [:dev, :test], runtime: false}
+      {:number, "~> 1.0.4"}
     ]
   end
 

@@ -18,8 +18,13 @@ defmodule PeticeniWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-
     resources "/products", ProductsController, only: [:index, :show]
+  end
+
+  scope "/admin", PeticeniWeb do
+    pipe_through :browser
+
+    resources "/products", Admin.ProductsController, only: [:index, :show, :edit, :update]
   end
 
   # Other scopes may use custom stacks.

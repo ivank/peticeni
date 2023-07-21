@@ -1,0 +1,12 @@
+<.table rows={@products} id="products">
+  <:col :let={product} label={gettext("Name")}><%= product.name %></:col>
+
+  <:action :let={product}>
+    <.link
+      href={~p"/admin/products/#{product}/edit"}
+      class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
+    >
+      Edit
+    </.link>
+  </:action>
+</.table>
