@@ -51,7 +51,8 @@ defmodule Peticeni.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:contex, "~> 0.4.0"},
-      {:number, "~> 1.0.4"}
+      {:number, "~> 1.0.4"},
+      {:ecto_soft_delete, "~> 2.0.2"}
     ]
   end
 

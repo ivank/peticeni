@@ -1,6 +1,7 @@
 defmodule Peticeni.Catalog.Price do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.SoftDelete.Schema
 
   @type t :: %__MODULE__{
           date: NativeDate.t(),
@@ -21,6 +22,7 @@ defmodule Peticeni.Catalog.Price do
     belongs_to(:store, Peticeni.Catalog.Store)
 
     timestamps()
+    soft_delete_schema()
   end
 
   @doc false

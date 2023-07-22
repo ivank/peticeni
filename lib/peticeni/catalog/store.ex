@@ -1,6 +1,7 @@
 defmodule Peticeni.Catalog.Store do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.SoftDelete.Schema
 
   @type t :: %__MODULE__{
           name: String.t(),
@@ -17,6 +18,7 @@ defmodule Peticeni.Catalog.Store do
     many_to_many :products, Peticeni.Catalog.Product, join_through: Peticeni.Catalog.Price
 
     timestamps()
+    soft_delete_schema()
   end
 
   @doc false
