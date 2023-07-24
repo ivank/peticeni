@@ -21,13 +21,16 @@ defmodule Peticeni.CatalogTest do
     end
 
     test "create_price/1 with valid data creates a price" do
-      valid_attrs = %{date: ~D[2023-05-19], price: 42, product_id: 42, store_id: 42}
+      store = store_fixture()
+      product = product_fixture()
+
+      valid_attrs = %{date: ~D[2023-05-19], price: 42, product_id: product.id, store_id: store.id}
 
       assert {:ok, %Price{} = price} = Catalog.create_price(valid_attrs)
       assert price.date == ~D[2023-05-19]
       assert price.price == 42
-      assert price.product_id == 42
-      assert price.store_id == 42
+      assert price.product_id == product.id
+      assert price.store_id == store.id
     end
 
     test "create_price/1 with invalid data returns error changeset" do
@@ -36,13 +39,22 @@ defmodule Peticeni.CatalogTest do
 
     test "update_price/2 with valid data updates the price" do
       price = price_fixture()
-      update_attrs = %{date: ~D[2023-05-20], price: 43, product_id: 43, store_id: 43}
+
+      store2 = store_fixture()
+      product2 = product_fixture()
+
+      update_attrs = %{
+        date: ~D[2023-05-20],
+        price: 43,
+        product_id: product2.id,
+        store_id: store2.id
+      }
 
       assert {:ok, %Price{} = price} = Catalog.update_price(price, update_attrs)
       assert price.date == ~D[2023-05-20]
       assert price.price == 43
-      assert price.product_id == 43
-      assert price.store_id == 43
+      assert price.product_id == product2.id
+      assert price.store_id == store2.id
     end
 
     test "update_price/2 with invalid data returns error changeset" do

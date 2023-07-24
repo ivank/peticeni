@@ -1,7 +1,7 @@
 <.simple_form
   :let={f}
   for={@changeset}
-  action={~p"/admin/products/#{@changeset.data}/edit"}
+  action={~p"/admin/products"}
   phx-change="validate"
   phx-submit="save"
 >
@@ -17,6 +17,6 @@
     ]}
   />
   <:actions>
-    <.button color="black"><%= gettext("Save") %></.button>
+    <.button color="green"><%= gettext("Add") %></.button>
   </:actions>
 </.simple_form>

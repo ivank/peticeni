@@ -29,6 +29,8 @@ defmodule Peticeni.Catalog.Price do
   def changeset(price, attrs) do
     price
     |> cast(attrs, [:product_id, :store_id, :price, :date])
+    |> foreign_key_constraint(:product_id)
+    |> foreign_key_constraint(:store_id)
     |> validate_required([:product_id, :store_id, :price, :date])
   end
 end

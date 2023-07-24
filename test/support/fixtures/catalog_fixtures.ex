@@ -8,12 +8,16 @@ defmodule Peticeni.CatalogFixtures do
   Generate a price.
   """
   def price_fixture(attrs \\ %{}) do
+    store = store_fixture()
+    product = product_fixture()
+
     {:ok, price} =
       attrs
       |> Enum.into(%{
         date: ~D[2023-05-19],
         price: 42,
-        product_id: 42
+        product_id: product.id,
+        store_id: store.id
       })
       |> Peticeni.Catalog.create_price()
 
@@ -27,8 +31,7 @@ defmodule Peticeni.CatalogFixtures do
     {:ok, product} =
       attrs
       |> Enum.into(%{
-        name: "some name",
-        store_id: 42
+        name: "some name"
       })
       |> Peticeni.Catalog.create_product()
 

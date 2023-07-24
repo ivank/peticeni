@@ -194,6 +194,168 @@ defmodule PeticeniWeb.CoreComponents do
     """
   end
 
+  defp button_style(style, size, color) do
+    [
+      "inline-flex justify-center items-center gap-2 rounded-md transition-all dark:focus:ring-offset-gray-800",
+      case size do
+        "small" -> "py-2 px-3"
+        "default" -> "py-3 px-4"
+        "outline" -> "py-3 px-4 sm:p-5"
+      end,
+      case style do
+        "solid" ->
+          [
+            "border border-transparent font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 text-sm",
+            case color do
+              "black" ->
+                "bg-gray-800 text-white hover:bg-gray-900 focus:ring-gray-800 dark:focus:ring-gray-900"
+
+              "gray" ->
+                "bg-gray-500 text-white hover:bg-gray-600 focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600"
+
+              "red" ->
+                "bg-red-500 text-white hover:bg-red-600 focus:ring-red-500"
+
+              "yellow" ->
+                "bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500"
+
+              "green" ->
+                "bg-green-500 text-white hover:bg-green-600 focus:ring-green-500"
+
+              "blue" ->
+                "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500"
+
+              "indigo" ->
+                "bg-indigo-500 text-white hover:bg-indigo-600 focus:ring-indigo-500"
+
+              "purple" ->
+                "bg-purple-500 text-white hover:bg-purple-600 focus:ring-purple-500"
+
+              "pink" ->
+                " bg-pink-500 text-white hover:bg-pink-600 focus:ring-pink-500"
+
+              "white" ->
+                "bg-white text-gray-600 hover:bg-gray-50 focus:ring-white"
+            end
+          ]
+
+        "outline" ->
+          [
+            "border-2 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 text-sm",
+            case color do
+              "black" ->
+                "border-gray-900 text-gray-800 hover:text-white hover:bg-gray-800 hover:border-gray-800 focus:ring-gray-800 dark:hover:bg-gray-900 dark:border-gray-900 dark:hover:border-gray-900 dark:text-white dark:focus:ring-gray-900"
+
+              "gray" ->
+                "border-gray-200 text-gray-500 hover:text-white hover:bg-gray-500 hover:border-gray-500 focus:ring-gray-200 dark:hover:bg-gray-600 dark:border-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-600"
+
+              "red" ->
+                "border-red-200 text-red-500 hover:bg-red-500 hover:border-red-500 focus:ring-red-200"
+
+              "yellow" ->
+                "border-yellow-200 text-yellow-500 hover:text-white hover:bg-yellow-500 hover:border-yellow-500  focus:ring-yellow-200"
+
+              "green" ->
+                "border-green-200 text-green-500 hover:text-white hover:bg-green-500 hover:border-green-500 focus:ring-green-200"
+
+              "blue" ->
+                "border-blue-200 text-blue-500 hover:text-white hover:bg-blue-500 hover:border-blue-500 focus:ring-blue-200"
+
+              "indigo" ->
+                "border-indigo-200 text-indigo-500 hover:text-white hover:bg-indigo-500 hover:border-indigo-500 focus:ring-indigo-200"
+
+              "purple" ->
+                "border-purple-200 text-purple-500 hover:text-white hover:bg-purple-500 hover:border-purple-500 focus:ring-purple-200"
+
+              "pink" ->
+                "border-pink-200 text-pink-500 hover:text-white hover:bg-pink-500 hover:border-pink-500 focus:ring-pink-200"
+
+              "white" ->
+                "border-gray-100 text-gray-400 hover:bg-white hover:border-white focus:ring-white"
+            end
+          ]
+
+        "ghost" ->
+          [
+            "border border-transparent font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 text-sm",
+            case color do
+              "black" ->
+                "text-gray-800 hover:bg-gray-100 focus:ring-gray-800 dark:text-white dark:hover:bg-gray-900 dark:hover:border-gray-900 dark:focus:ring-gray-900"
+
+              "gray" ->
+                "text-gray-500 hover:bg-gray-100 focus:ring-gray-500 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+
+              "red" ->
+                "text-red-500 hover:bg-red-100 focus:ring-red-500"
+
+              "yellow" ->
+                "text-yellow-500 hover:bg-yellow-100 focus:ring-yellow-500"
+
+              "green" ->
+                "text-green-500 hover:bg-green-100 focus:ring-green-500"
+
+              "blue" ->
+                "text-blue-500 hover:bg-blue-100 focus:ring-blue-500"
+
+              "indigo" ->
+                "text-indigo-500 hover:bg-indigo-100 focus:ring-indigo-500"
+
+              "purple" ->
+                "text-purple-500 hover:bg-purple-100 focus:ring-purple-500"
+
+              "pink" ->
+                "text-pink-500 hover:bg-pink-100 focus:ring-pink-500"
+
+              "white" ->
+                "text-white hover:bg-white hover:text-gray-600 focus:ring-white"
+            end
+          ]
+
+        "soft" ->
+          [
+            "bg-blue-100 border border-transparent font-semibold focus:outline-none focus:ring-2 ring-offset-white focus:ring-offset-2 text-sm",
+            case color do
+              "black" ->
+                "bg-gray-100 text-gray-800 hover:text-white hover:bg-gray-800 focus:ring-gray-800 dark:bg-gray-700 dark:hover:bg-gray-900 dark:text-white"
+
+              "gray" ->
+                "bg-gray-100 text-gray-500 hover:text-white hover:bg-gray-500 focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600 dark:text-white dark:focus:ring-offset-gray-800"
+
+              "red" ->
+                "bg-red-100 text-red-500 hover:text-white hover:bg-red-100 focus:ring-red-500 dark:focus:ring-offset-gray-800"
+
+              "yellow" ->
+                "bg-yellow-100 text-yellow-500 hover:text-white hover:bg-yellow-100 focus:ring-yellow-500 dark:focus:ring-offset-gray-800"
+
+              "green" ->
+                "bg-green-100 text-green-500 hover:text-white hover:bg-green-100 focus:ring-green-500 dark:focus:ring-offset-gray-800"
+
+              "blue" ->
+                "bg-blue-100 text-blue-500 hover:text-white hover:bg-blue-100 focus:ring-blue-500 dark:focus:ring-offset-gray-800"
+
+              "indigo" ->
+                "bg-indigo-100 text-indigo-500 hover:text-white hover:bg-indigo-100 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+
+              "purple" ->
+                "bg-purple-100 text-purple-500 hover:text-white hover:bg-purple-100 focus:ring-purple-500 dark:focus:ring-offset-gray-800"
+
+              "pink" ->
+                "bg-pink-100 text-pink-500 hover:text-white hover:bg-pink-100 focus:ring-pink-500 dark:focus:ring-offset-gray-800"
+
+              "white" ->
+                "bg-white/[.1] text-gray-100 hover:text-gray-600 hover:bg-white focus:ring-white dark:focus:ring-offset-gray-800"
+            end
+          ]
+
+        "white" ->
+          "border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+
+        "link" ->
+          "border border-transparent font-semibold text-blue-500 hover:text-blue-700 focus:outline-none focus:ring-2 ring-offset-white focus:ring-blue-500 focus:ring-offset-2 text-sm"
+      end
+    ]
+  end
+
   @doc """
   Renders a button.
 
@@ -204,6 +366,19 @@ defmodule PeticeniWeb.CoreComponents do
   """
   attr :type, :string, default: nil
   attr :class, :string, default: nil
+
+  attr :style, :string,
+    default: "solid",
+    values: ~w(solid outline ghost soft white link)
+
+  attr :size, :string,
+    default: "default",
+    values: ~w(small default large)
+
+  attr :color, :string,
+    default: "black",
+    values: ~w(black gray red yellow green blue indigo purple pink white)
+
   attr :rest, :global, include: ~w(disabled form name value)
 
   slot :inner_block, required: true
@@ -213,7 +388,8 @@ defmodule PeticeniWeb.CoreComponents do
     <button
       type={@type}
       class={[
-        "phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3",
+        "phx-submit-loading:opacity-75",
+        button_style(@style, @size, @color),
         "text-sm font-semibold leading-6 text-white active:text-white/80",
         @class
       ]}
@@ -221,6 +397,49 @@ defmodule PeticeniWeb.CoreComponents do
     >
       <%= render_slot(@inner_block) %>
     </button>
+    """
+  end
+
+  @doc """
+  Renders a button that is a link.
+
+  ## Examples
+
+      <.button_link navigate={~p"/test"}>Send!</.button_link>
+      <.button_link phx-click="go" class="ml-2">Send!</.button_link>
+  """
+  attr :class, :string, default: nil
+
+  attr :style, :string,
+    default: "solid",
+    values: ~w(solid outline ghost soft white link)
+
+  attr :size, :string,
+    default: "default",
+    values: ~w(small default large)
+
+  attr :color, :string,
+    default: "black",
+    values: ~w(black gray red yellow green blue indigo purple pink white)
+
+  attr :rest, :global,
+    include:
+      ~w(navigate patch href replace method csrf_token download hreflang referrerpolicy rel target type)
+
+  slot :inner_block, required: true
+
+  def button_link(assigns) do
+    ~H"""
+    <.link
+      class={[
+        "phx-submit-loading:opacity-75",
+        button_style(@style, @size, @color),
+        @class
+      ]}
+      {@rest}
+    >
+      <%= render_slot(@inner_block) %>
+    </.link>
     """
   end
 
@@ -434,6 +653,10 @@ defmodule PeticeniWeb.CoreComponents do
 
   slot :action, doc: "the slot for showing user actions in the last table column"
 
+  slot :header, doc: "Header of the table, can utilize 'header_text' and 'header_actions' slots"
+  slot :header_actions, doc: "Part of 'header' slot"
+  slot :header_text, doc: "Part of 'header' slot"
+
   def table(assigns) do
     assigns =
       with %{rows: %Phoenix.LiveView.LiveStream{}} <- assigns do
@@ -445,6 +668,26 @@ defmodule PeticeniWeb.CoreComponents do
       <div class="-m-1.5 overflow-x-auto">
         <div class="inline-block min-w-full p-1.5 align-middle">
           <div class="overflow-hidden rounded-lg border dark:border-gray-700">
+            <div
+              :if={@header}
+              class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700"
+            >
+              <div>
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                  <%= render_slot(@header) %>
+                </h2>
+                <p :if={@header_text} class="text-sm text-gray-600 dark:text-gray-400">
+                  <%= render_slot(@header_text) %>
+                </p>
+              </div>
+
+              <div :if={@header_actions}>
+                <div class="inline-flex gap-x-2">
+                  <%= render_slot(@header_actions) %>
+                </div>
+              </div>
+            </div>
+
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
               <thead class="bg-gray-50 dark:bg-gray-700">
                 <tr>
