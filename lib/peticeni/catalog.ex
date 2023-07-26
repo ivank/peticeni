@@ -117,6 +117,21 @@ defmodule Peticeni.Catalog do
     Repo.all(Product)
   end
 
+  def list_products_flop(params) do
+    opts = [for: Product]
+    flop = Flop.validate!(params, opts)
+
+    Product
+    |> Flop.with_named_bindings(
+      flop,
+      fn
+        q, :prices -> join(q, :inner, [product], assoc(product, :prices), as: :prices)
+      end,
+      opts
+    )
+    |> Flop.run(flop, opts)
+  end
+
   @doc """
   Gets a single product.
 
@@ -297,18 +312,19 @@ defmodule Peticeni.Catalog do
   @spec product_prices(number()) :: [%{price: number, store: String.t(), date: Date.t()}]
   def product_prices(product_id) do
     Repo.all(
-      from price in Price,
+      from(price in Price,
         join: store in assoc(price, :store),
         order_by: [desc: price.date],
         where: price.product_id == ^product_id,
         select: %{date: price.date, store: store.name, price: price.price}
+      )
     )
   end
 
   @spec latest_products_with_trends :: any
   def latest_products_with_trends do
     Repo.all(
-      from price in Price,
+      from(price in Price,
         join: product in assoc(price, :product),
         join: store in assoc(price, :store),
         group_by: [product.id, store.id],
@@ -327,6 +343,7 @@ defmodule Peticeni.Catalog do
               price.date
             )
         }
+      )
     )
   end
 end

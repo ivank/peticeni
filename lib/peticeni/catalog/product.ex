@@ -11,12 +11,24 @@ defmodule Peticeni.Catalog.Product do
           updated_at: NaiveDateTime.t()
         }
 
+  @derive {
+    Flop.Schema,
+    filterable: [:name, :measure, :store],
+    sortable: [:name, :measure, :store],
+    adapter_opts: [
+      join_fields: [
+        store: [binding: :prices, field: :store_id, ecto_type: :integer]
+      ]
+    ],
+    default_limit: 5
+  }
+
   schema "products" do
-    field :name, :string
+    field(:name, :string)
     field(:measure, Ecto.Enum, values: [:count, :liter, :kg], default: :count)
 
-    has_many :prices, Peticeni.Catalog.Price
-    many_to_many :stores, Peticeni.Catalog.Store, join_through: Peticeni.Catalog.Price
+    has_many(:prices, Peticeni.Catalog.Price)
+    many_to_many(:stores, Peticeni.Catalog.Store, join_through: Peticeni.Catalog.Price)
 
     timestamps()
     soft_delete_schema()

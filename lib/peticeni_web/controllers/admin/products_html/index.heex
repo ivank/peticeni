@@ -7,6 +7,26 @@
     </.button_link>
   </:header_actions>
 
+  <:footer>
+    <p class="text-sm text-gray-600 dark:text-gray-400">
+      <span class="font-semibold text-gray-800 dark:text-gray-200"><%= @meta.total_count %></span> results
+    </p>
+  </:footer>
+
+  <:footer_actions>
+
+    <.button_link :if={@meta.has_previous_page?} size="small" style="white" navigate={~p"/admin/products?#{flop_query(@meta, page: @meta.previous_page)}"}>
+      <.icon name="hero-arrow-left" />
+      <%= gettext("Previous") %>
+    </.button_link>
+
+    <.button_link :if={@meta.has_next_page?} size="small" style="white" navigate={~p"/admin/products?#{flop_query(@meta, page: @meta.next_page)}"}>
+      <%= gettext("Next") %>
+      <.icon name="hero-arrow-right" />
+    </.button_link>
+    
+  </:footer_actions>
+
   <:col :let={product} label={gettext("Name")}><%= product.name %></:col>
 
   <:action :let={product}>

@@ -2,8 +2,12 @@ defmodule PeticeniWeb.Admin.ProductsController do
   use PeticeniWeb, :controller
   alias Peticeni.Catalog
 
-  def index(conn, _params) do
-    render(conn, :index, products: Catalog.list_products())
+  require Logger
+
+  def index(conn, params) do
+    {products, meta} = Catalog.list_products_flop(params)
+    Logger.info("Meta: #{inspect(meta)}")
+    render(conn, :index, products: products, meta: meta)
   end
 
   def new(conn, _params) do

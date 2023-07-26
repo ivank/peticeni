@@ -29,6 +29,8 @@ config :peticeni, PeticeniWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :peticeni, Peticeni.Mailer, adapter: Swoosh.Adapters.Local
 
+config :flop, repo: Peticeni.Repo
+
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
