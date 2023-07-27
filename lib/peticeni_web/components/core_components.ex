@@ -758,7 +758,10 @@ defmodule PeticeniWeb.CoreComponents do
                 </tr>
               </tbody>
             </table>
-            <div :if={@footer} class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
+            <div
+              :if={@footer}
+              class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700"
+            >
               <div>
                 <%= render_slot(@footer) %>
               </div>
