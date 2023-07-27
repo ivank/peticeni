@@ -1,5 +1,7 @@
 # Peticeni
 
+> **Experimenting with elixir and phoenix**
+
 To start your Phoenix server:
 
 - Run `mix setup` to install and setup dependencies
